@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
+#include "avl.h"
 
 Nodo* asignar_nodo(int dato){
     Nodo *n;
