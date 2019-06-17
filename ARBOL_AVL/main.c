@@ -53,32 +53,11 @@ Nodo* rotacion_doble_derecha(Nodo *raiz){
 
 /* Inserta un dato en el arbol, el dato no debe estar ya en el arbol */
 Nodo* insertar(int dato, Nodo *raiz){
-	if(raiz == NULL){
-		return asignar_nodo(dato);
-	}else if(dato > raiz->dato){
-        raiz->izquierdo = insertar(dato,raiz->izquierdo);
-        if((altura(raiz->izquierdo) - altura(raiz->derecho)) == 2){
-            if(dato < raiz->izquierdo->dato){
-                raiz = rotacion_simple_izquierda(raiz);
-            }else{
-                raiz = rotacion_doble_izquierda(raiz);
-            }
-        }
-	}else if(dato < raiz->dato){
-	    raiz->derecho = insertar(dato, raiz->derecho);
-        if((altura(raiz->derecho) - altura(raiz->izquierdo)) == 2){
-            printf("el arbol esta desvalanciado hacia la der");
-            if(dato > raiz->derecho->dato){
-                raiz = rotacion_simple_derecha(raiz);
-            }else{
-                raiz = rotacion_doble_derecha(raiz);
-            }
-        }
-	}else{
-		printf("\nEl dato %d ya se encuentra en el arbol\n",dato);
-	}
-	raiz->altura = maximo(altura(raiz->derecho),altura(raiz->izquierdo)) + 1;
-	return raiz;
+    // Si el nodo esta vacio le asigna uno
+    if(raiz == NULL){
+        raiz = asignar_nodo(dato);
+    }
+    return raiz;
 }
 
 /* Calcula la altura del arbol o de cualquier subarbol ingresado */
