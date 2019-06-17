@@ -126,43 +126,12 @@ Nodo* eliminar(int dato, Nodo* raiz){
             raiz->derecho = eliminar(dato,raiz->derecho);
         }//se verifica que el valor es el que corresponde con el nodo
         else if(dato == raiz->dato){
-            Nodo *auxiliar = NULL;
-            //Si tiene izquierdo
-            if(raiz->izquierdo != NULL){
-                //se guarda el derecho para colocar lo a la derecha del valor a remplazar
-                auxiliar = raiz->derecho;
-                // el izquierdo toma la posicion de raiz
-                raiz = raiz->izquierdo;
-				// Este puntero se usa para llegar a la derecha del izquierdo y colocar el resto que quedo en la derecha
-                Nodo* puntero_de_avance = raiz;
-				// en caso de que el while se rompa ya se puede ocupar directamente esa posicion
-				// este termina en el elemento mayor del sub arbol
-				while(puntero_de_avance->derecho != NULL){
-					// Como raiz esta apuntando al izq se busca el elemento más grande del sub arbol
-					puntero_de_avance = puntero_de_avance->derecho;
-				}
-				// El supuesto hijo derecho sea un nodo o null se coloca como el nuevo elemento mayor del sub arbol
-				puntero_de_avance->derecho = auxiliar;
-            }else if(raiz->derecho != NULL){
-				//se guarda el izquierdo para colocar lo a la izquierda del valor a remplazar
-				auxiliar = raiz->izquierdo;
-                // el derecho toma la posicion de raiz
-                raiz = raiz->derecho;
-				// Este puntero se usa para llegar a la derecha del izquierdo y colocar el resto que quedo en la derecha
-				Nodo* puntero_de_avance = raiz;
-				// en caso de que el while se rompa ya se puede ocupar directamente esa posicion
-				// este termina en el elemento menor del sub arbol
-				while(puntero_de_avance->izquierdo != NULL){
-					puntero_de_avance = puntero_de_avance->izquierdo;
-				}
-				// El supuesto hijo izquierdo sea un nodo o null se coloca como el nuevo elemento menor del sub arbol
-				puntero_de_avance->izquierdo = auxiliar;
-			}else{
-				// Si no tiene derecho ni izquierdo la direccion de memoria se "limpia"
-				// igualandola a NULL y se retorna;
-				return raiz = NULL;
-			}
-			// falta balancear antes de retornar
+            //
+
+			// se ajusta la altura
+
+			// se balancea
+
             return raiz;
         }
 	}else{
@@ -227,7 +196,7 @@ int main(){
         printf("\n\nINGRESAR UNA OPERACION PARA EL ARBOL AVL:");
         printf("\n1)INSERTAR DATO");
         printf("\n2)ELIMINAR DATO");
-        printf("\n3)SALIR DEL PROGRAMA");
+        printf("\n3)SALIR DEL PROGRAMA \n");
 		scanf("%d",&op);
 
 		switch(op){
@@ -235,7 +204,9 @@ int main(){
 			    printf("\nIngrese el valor que desea insertar al arbol:");
 			    scanf("%d",&x);
                 raiz = insertar(x,raiz);
-                recorrer(raiz);
+                if(raiz == NULL){
+
+                }
 			    break;
 
 			case 2:
