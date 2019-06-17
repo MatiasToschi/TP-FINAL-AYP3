@@ -60,10 +60,22 @@ Nodo* insertar(int dato, Nodo *raiz){
     //si el dato es mayor este se inserta a la derecha
     else if(raiz->dato < dato){
         raiz->derecho = insertar(dato, raiz->derecho);
+        //se establece la nueva altura del nodo tomando la altura maxima de sus hijos
+        raiz->altura = 1 + maximo(altura(raiz->izquierdo),altura(raiz->derecho));
+        if(calculador_de_balance(raiz)== -2){
+            //si se desbalancea a la derecha
+            // se implementan las rotaciones
+        }
     }
     //si el dato es menor este se inserta a la izquierda
     else if (raiz->dato > dato){
         raiz->izquierdo = insertar(dato, raiz->izquierdo);
+        //se establece la nueva altura del nodo tomando la altura maxima de sus hijos
+        raiz->altura = 1 + maximo(altura(raiz->izquierdo),altura(raiz->derecho));
+        if(calculador_de_balance(raiz) == 2){
+            // Si se desbalancea a la izquierda
+            // se implementan las rotaciones
+        }
     }else
     // si no se cumple ninguno de los casos anteriores se asume que el dato ya existe dentro del arbol
     {
@@ -87,6 +99,9 @@ int calculador_de_balance(Nodo *raiz){
         return 0;
     }
     // Se verifica la altura por el metodo altura
+    // si retorna 2 el desbalance es a la izquierda
+    // si retorna -2 el desbalance es a la derecha
+    printf("altura izq %d \n", altura(raiz->izquierdo));
     return altura(raiz->izquierdo) - altura(raiz->derecho);
 }
 
@@ -214,12 +229,12 @@ int main(){
 			    break;
 
 			case 2:
-			    printf("\nIngrese el valor que desea eliminar del arbol:");
+			    printf("\nIngrese el valor que desea eliminar del arbol: ");
 			    scanf("%d",&x);
 			    break;
 
 		    case 3:
-		        printf("Saliendo del programa, adios");
+		        printf("Saliendo del programa, adios ");
 		        break;
 		}
 	}while(op > 0 && op < 3);
