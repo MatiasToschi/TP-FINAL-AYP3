@@ -57,6 +57,19 @@ Nodo* insertar(int dato, Nodo *raiz){
     if(raiz == NULL){
         raiz = asignar_nodo(dato);
     }
+    //si el dato es mayor este se inserta a la derecha
+    else if(raiz->dato < dato){
+        raiz->derecho = insertar(dato, raiz->derecho);
+    }
+    //si el dato es menor este se inserta a la izquierda
+    else if (raiz->dato > dato){
+        raiz->izquierdo = insertar(dato. raiz->izquierdo);
+    }else
+    // si no se cumple ninguno de los casos anteriores se asume que el dato ya existe dentro del arbol
+    {
+        printf("El dato %d ya existe dentro del arbol", dato);
+        return NULL;
+    }
     return raiz;
 }
 
@@ -208,6 +221,7 @@ int main(){
 			    printf("\nIngrese el valor que desea insertar al arbol:");
 			    scanf("%d",&x);
                 raiz = insertar(x,raiz);
+                recorrer(raiz);
 			    break;
 
 			case 2:

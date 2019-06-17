@@ -1,8 +1,7 @@
 # depslib dependency file v1.0
-1560132480 source:c:\users\matias\desktop\git\tp-final-ayp3\arbol_avl\main.c
+1560806022 source:c:\users\matias\desktop\git\tp-final-ayp3\arbol_avl\main.c
 	<stdio.h>
 	<stdlib.h>
-	"avl.h"
 
 1560132326 c:\users\matias\desktop\git\tp-final-ayp3\arbol_avl\avl.h
 
