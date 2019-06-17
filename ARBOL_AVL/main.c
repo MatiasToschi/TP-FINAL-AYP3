@@ -82,22 +82,12 @@ int altura(Nodo *raiz){
 }
 
 int calculador_de_balance(Nodo *raiz){
-	int altura_izq, altura_der;
-    if(raiz==NULL){
+    // Si la raiz es 0 no se calcula el balance
+    if(raiz == NULL){
         return 0;
     }
-    if(raiz->izquierdo==NULL){
-        altura_izq = 0;
-    }else{
-        altura_izq = 1 + raiz->izquierdo->altura;
-    }
-
-    if(raiz->derecho==NULL){
-        altura_der = 0;
-    }else{
-        altura_der = 1 + raiz->derecho->altura;
-    }
-    return(altura_izq - altura_der);
+    // Se verifica la altura por el metodo altura
+    return altura(raiz->izquierdo) - altura(raiz->derecho);
 }
 
 /* Elimina un dato del arbol, mientras el arbol no este vacio */
