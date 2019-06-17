@@ -115,6 +115,18 @@ int calculador_de_balance(Nodo *raiz){
     return altura(raiz->izquierdo) - altura(raiz->derecho);
 }
 
+Nodo * nodo_menor(Nodo* raiz){
+    // se guarda el nodo recibido para avanzar sobre sus "hijos"
+    Nodo* puntero_nodo = raiz;
+
+    while(puntero_nodo->izquierdo != NULL){
+        puntero_nodo = puntero_nodo->izquierdo;
+    }
+
+    // devuelve el nodo menor de un arbol/ sub-arbol
+    return puntero_nodo;
+}
+
 /* Elimina un dato del arbol, mientras el arbol no este vacio */
 Nodo* eliminar(int dato, Nodo* raiz){
 	if(raiz != NULL){
@@ -126,7 +138,7 @@ Nodo* eliminar(int dato, Nodo* raiz){
             raiz->derecho = eliminar(dato,raiz->derecho);
         }//se verifica que el valor es el que corresponde con el nodo
         else if(dato == raiz->dato){
-            //
+
 
 			// se ajusta la altura
 
