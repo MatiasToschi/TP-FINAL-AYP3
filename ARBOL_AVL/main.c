@@ -63,12 +63,11 @@ Nodo* insertar(int dato, Nodo *raiz){
     }
     //si el dato es menor este se inserta a la izquierda
     else if (raiz->dato > dato){
-        raiz->izquierdo = insertar(dato. raiz->izquierdo);
+        raiz->izquierdo = insertar(dato, raiz->izquierdo);
     }else
     // si no se cumple ninguno de los casos anteriores se asume que el dato ya existe dentro del arbol
     {
         printf("El dato %d ya existe dentro del arbol", dato);
-        return NULL;
     }
     return raiz;
 }
