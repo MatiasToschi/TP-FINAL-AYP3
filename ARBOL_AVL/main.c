@@ -65,6 +65,11 @@ Nodo* insertar(int dato, Nodo *raiz){
         if(calculador_de_balance(raiz)== -2){
             //si se desbalancea a la derecha
             // se implementan las rotaciones
+            if(raiz->derecho->dato < dato){
+                raiz = rotacion_simple_derecha(raiz);
+            }else{
+                raiz = rotacion_doble_derecha(raiz);
+            }
         }
     }
     //si el dato es menor este se inserta a la izquierda
@@ -75,6 +80,11 @@ Nodo* insertar(int dato, Nodo *raiz){
         if(calculador_de_balance(raiz) == 2){
             // Si se desbalancea a la izquierda
             // se implementan las rotaciones
+            if(raiz->izquierdo->dato > dato){
+                raiz = rotacion_simple_izquierda(raiz);
+            }else{
+                raiz = rotacion_doble_izquierda(raiz);
+            }
         }
     }else
     // si no se cumple ninguno de los casos anteriores se asume que el dato ya existe dentro del arbol
