@@ -150,11 +150,35 @@ Nodo* eliminar(int dato, Nodo* raiz){
             raiz->derecho = eliminar(dato,raiz->derecho);
         }//se verifica que el valor es el que corresponde con el nodo
         else if(dato == raiz->dato){
-
+            //si tiene izquierdo
+            Nodo* auxliar = NULL;
+            if(raiz->izquierdo != NULL){
+                auxliar = nodo_mayor(raiz->izquierdo);
+                raiz->dato = auxliar->dato;
+                raiz->izquierdo = eliminar(raiz->izquierdo,auxliar->dato);
+            }
+            // si tiene derecho
+            else if(raiz->derecho != NULL){
+                auxliar = nodo_menor(raiz->derecho);
+                raiz->dato = auxliar->dato;
+                raiz->derecho = eliminar(raiz->derecho, auxliar->dato);
+            }
+            //no tiene hijos
+            else{
+                raiz = NULL;
+                // en caso de que el nodo no tiene hijos unicamente
+                // borra la referencia, y la retorna para volver al
+                // nivel anterior y continuar con la recursividad
+                return raiz;
+            }
 			// se ajusta la altura
-
+            raiz->altura = maximo(altura(raiz->izquierdo),altura(raiz->derecho)) + 1;
 			// se balancea
+            if(calculador_de_balance(raiz)==2){
 
+            }else if(calculador_de_balance(raiz) == -2){
+
+            }
             return raiz;
         }
 	}else{
