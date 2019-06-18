@@ -111,7 +111,6 @@ int calculador_de_balance(Nodo *raiz){
     // Se verifica la altura por el metodo altura
     // si retorna 2 el desbalance es a la izquierda
     // si retorna -2 el desbalance es a la derecha
-    printf("altura izq %d \n", altura(raiz->izquierdo));
     return altura(raiz->izquierdo) - altura(raiz->derecho);
 }
 
@@ -175,9 +174,19 @@ Nodo* eliminar(int dato, Nodo* raiz){
             raiz->altura = maximo(altura(raiz->izquierdo),altura(raiz->derecho)) + 1;
 			// se balancea
             if(calculador_de_balance(raiz)==2){
-
+                // desvalanceado a la izquierda
+                if(calculador_de_balance(raiz->izquierdo)>=1){
+                    raiz = rotacion_simple_izquierda(raiz);
+                }else{
+                    raiz = rotacion_doble_izquierda(raiz);
+                }
             }else if(calculador_de_balance(raiz) == -2){
-
+                //desvalanceado a la derecha
+                if(calculador_de_balance(raiz->derecho)<=-1){
+                    raiz = rotacion_simple_derecha(raiz);
+                }else{
+                    raiz = rotacion_doble_derecha(raiz);
+                }
             }
             return raiz;
         }
@@ -252,7 +261,7 @@ int main(){
 			    scanf("%d",&x);
                 raiz = insertar(x,raiz);
                 if(raiz == NULL){
-
+                    recorrer(raiz);
                 }
 			    break;
 
