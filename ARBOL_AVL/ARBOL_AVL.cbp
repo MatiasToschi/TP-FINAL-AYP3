@@ -31,11 +31,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="avl.c">
-			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="avl.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
