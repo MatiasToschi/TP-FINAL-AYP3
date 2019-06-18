@@ -260,7 +260,7 @@ int main(){
 			    printf("\nIngrese el valor que desea insertar al arbol:");
 			    scanf("%d",&x);
                 raiz = insertar(x,raiz);
-                if(raiz == NULL){
+                if(raiz != NULL){
                     recorrer(raiz);
                 }
 			    break;
@@ -268,6 +268,14 @@ int main(){
 			case 2:
 			    printf("\nIngrese el valor que desea eliminar del arbol: ");
 			    scanf("%d",&x);
+			    if(raiz != NULL){
+                   raiz = eliminar(x,raiz);
+                   if(raiz != NULL){
+                        recorrer(raiz);
+                   }
+			    }else{
+                    printf("El arbol esta vacio");
+			    }
 			    break;
 
 		    case 3:
